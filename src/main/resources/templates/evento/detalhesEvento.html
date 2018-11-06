@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <meta charset="ISO-8859-1">
+  <title>EventosApp</title>
+  
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+  
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css" media="screen,projection" />
+  
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+</head>
+<body>
+  <header>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Detalhes do Evento</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/listarEventos">Listar Evento</a></li>
+      </ul>
+    </div>
+  </nav>
+  </header>
+ 
+  <div th:each="evento : ${evento}" class="container" style="margin:20px">
+  
+    <div class="row">
+      <p>Id: <span th:text="${evento.id}"></span></p>
+      <p>Nome: <span th:text="${evento.nome}"></span></p>
+      <p>Local: <span th:text="${evento.local}"></span></p>
+      <p>Data: <span th:text="${evento.data}"></span></p>
+      <p>Horario: <span th:text="${evento.horario}"></span></p>
+    </div>
+    
+   <th:block th:include="mensagemValidacao"></th:block>
+  
+    <form name="FR" method="post" th:action="${evento.id}">
+    <div class="row">
+      <div class="input-field col s2">
+      <label for="id">Id</label><input type="text" name="id"   id="id"   value="0" readonly="readonly">
+      </div>
+      <div class="input-field col s4">
+      <label for="nome">Nome</label><input type="text" name="nome" id="nome" value=""  required="required">
+      </div>
+      <div class="input-field col s4">
+      <label for="rg">RG</label><input type="text" name="rg"   id="rg"   value=""  required="required">
+      </div>
+      <div class="input-field col s2">
+      <button name="bt" class="waves-effect waves-light btn" type="submit">Adicionar</button>
+      </div>
+    </div>
+    </form>
+    <table>
+    <thead><tr><th>#</th><th>Nome</th><th>RG</th><th>Acao</th></tr></thead>
+    <tbody>
+      <tr th:each="convidado : ${convidados}">
+        <form th:name="'F'+${convidado.id}" method="post" th:action="'removeConvidado/' + ${evento.id}">
+        <input type="hidden" name="id" th:value="${convidado.id}">
+        <input type="hidden" name="nome" th:value="${convidado.nome}">
+        <input type="hidden" name="rg" th:value="${convidado.rg}">
+        <td><span th:text="${convidado.id}"></span></td>
+        <!--  
+        <td><a th:href="${(#mvc.url('EC#detalhesEvento').arg(0,evento.id)).build()}"><span th:text="${evento.nome}"></span></a></td>
+        -->
+        <td><span th:text="${convidado.nome}"></span></td>
+        <td><span th:text="${convidado.rg}"></span></td>
+        <td>
+          <a th:href="'javascript:document.F'+${convidado.id}+'.submit()'"><i class="material-icons left">delete_forever</i></a>
+          <a th:href="'javascript:editar(this.document.F'+${convidado.id}+')'"><i class="material-icons left">edit</i></a>
+        </td>
+        </form>
+      </tr>
+    </tbody>
+    </table>
+
+  </div>
+ 
+  <!--JavaScript at end of body for optimized loading-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+
+
+  <script type="text/javascript">
+  function editar(f){
+    this.document.FR.id.value = f.id.value;
+    this.document.FR.nome.value = f.nome.value;
+    this.document.FR.rg.value = f.rg.value;
+    this.document.FR.bt.textContent="Alterar"
+  }
+  </script>
+</body>
+</html>

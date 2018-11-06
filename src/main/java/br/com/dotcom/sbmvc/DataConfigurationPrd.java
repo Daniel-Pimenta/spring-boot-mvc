@@ -24,6 +24,14 @@ public class DataConfigurationPrd {
       String password = dbUri.getUserInfo().split(":")[1];
       String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
 
+      System.out.println("******************************************************");
+      System.out.println("****************** POSTGRES HEROKU *******************");
+      System.out.println("URL :"+dbUrl);
+      System.out.println("USER:"+username);
+      System.out.println("PASS:"+password);
+      System.out.println("******************************************************");
+      
+      
       BasicDataSource basicDataSource = new BasicDataSource();
       basicDataSource.setUrl(dbUrl);
       basicDataSource.setUsername(username);

@@ -1,4 +1,3 @@
-/*
 package br.com.dotcom.sbmvc;
 
 import javax.sql.DataSource;
@@ -12,6 +11,7 @@ import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
 @Configuration
+@Profile("dev")
 public class DataConfigurationDev {
 	
 	@Bean
@@ -37,4 +37,3 @@ public class DataConfigurationDev {
 	}
 
 }
-*/

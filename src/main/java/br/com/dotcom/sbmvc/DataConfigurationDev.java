@@ -15,8 +15,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 public class DataConfigurationDev {
 	
 	@Bean
-	
-	public DataSource dataSource() {
+	public DataSource devDataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
 		dataSource.setUrl("jdbc:mysql://dotcom.com.br:3306/dotcom_eventosapp");

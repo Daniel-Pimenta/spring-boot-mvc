@@ -13,7 +13,7 @@ git push heroku master
 heroku addons:create heroku-postgresql:hobby-dev
 
 git add .
-git commit -m "first commit"
+git commit -m "Commit Heroku PRD"
 git push heroku master
 heroku logs --tail
 

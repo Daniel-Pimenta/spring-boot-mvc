@@ -16,6 +16,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 @Configuration
 public class DataConfigurationPrd {
 
+	/*
   @Bean
   public BasicDataSource basicDataSource() throws URISyntaxException {
       URI dbUri = new URI(System.getenv("DATABASE_URL"));
@@ -31,6 +32,11 @@ public class DataConfigurationPrd {
       System.out.println("PASS:"+password);
       System.out.println("******************************************************");
       
+
+      //URL :jdbc:postgresql://ec2-174-129-18-98.compute-1.amazonaws.com:5432/d9snnj9ndabmuj
+      //USER:pwslbgzqqvdstp
+      //PASS:00603f5a23afcccb71b230d39e2f378c787cc6101b415c826ea6b3e955503f80
+
       
       BasicDataSource basicDataSource = new BasicDataSource();
       basicDataSource.setUrl(dbUrl);
@@ -39,8 +45,8 @@ public class DataConfigurationPrd {
 
       return basicDataSource;
   }
-	
-	/*
+	*/
+
 	@Bean
 	public DataSource dataSource() throws URISyntaxException {
     URI dbUri = new URI(System.getenv("DATABASE_URL"));
@@ -49,6 +55,14 @@ public class DataConfigurationPrd {
     String password = dbUri.getUserInfo().split(":")[1];
     String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
 		
+    System.out.println("******************************************************");
+    System.out.println("****************** POSTGRES HEROKU *******************");
+    System.out.println("URL :"+dbUrl);
+    System.out.println("USER:"+username);
+    System.out.println("PASS:"+password);
+    System.out.println("******************************************************");
+    
+    
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("com.postgresql.jdbc.driver");
 		dataSource.setUrl(dbUrl);
@@ -67,5 +81,5 @@ public class DataConfigurationPrd {
 		adapter.setPrepareConnection(true);
 		return adapter;
 	}
-	*/
+
 }

@@ -1,4 +1,3 @@
-/*
 package br.com.dotcom.sbmvc.data;
 
 import java.net.URI;
@@ -44,4 +43,3 @@ public class DataConfigurationPrd {
 
 
 }
-*/

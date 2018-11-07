@@ -1,4 +1,3 @@
-/*
 package br.com.dotcom.sbmvc.data;
 
 import javax.sql.DataSource;
@@ -37,4 +36,3 @@ public class DataConfigurationDev {
 	}
 
 }
-*/

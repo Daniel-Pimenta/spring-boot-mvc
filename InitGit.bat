@@ -18,9 +18,11 @@ git push heroku master
 heroku addons:create heroku-postgresql:hobby-dev
 
 git add .
-git commit -m "Commit Heroku PRD"
+git commit -m "Commit Heroku TST 2"
 git push heroku master
 heroku logs --tail
+
+
 
 
 

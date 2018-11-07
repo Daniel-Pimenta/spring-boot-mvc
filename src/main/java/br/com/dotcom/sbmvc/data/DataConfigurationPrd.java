@@ -1,4 +1,5 @@
-package br.com.dotcom.sbmvc;
+/*
+package br.com.dotcom.sbmvc.data;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -43,3 +44,4 @@ public class DataConfigurationPrd {
 
 
 }
+*/

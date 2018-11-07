@@ -32,10 +32,10 @@ public class EventoController {
 	private List<Convidado> convidados;
 	private Convidado convidado;
 	
-	@GetMapping("/")
+/*	@GetMapping("/")
 	public String index() {
 		return "redirect:/listarEventos";
-	}
+	}*/
 	
 	// *********** INSERT EVENTO ****************
 	@GetMapping("/cadastrarEvento")
@@ -54,7 +54,6 @@ public class EventoController {
     return "redirect:/listarEventos";
 	}
 	
-	
   // *********** UPDATE EVENTO ****************
 	@GetMapping("/editarEvento/{id}")
 	public ModelAndView editarEvento(@PathVariable("id") long id) {
@@ -64,7 +63,6 @@ public class EventoController {
 		mv.addObject("evento",evento);
 		return mv;
 	}
-	
 	@PostMapping("/editarEvento")
 	public String editarEvento(Evento evento) {
 		System.out.println("POST editarEvento :"+evento.getId());
@@ -77,13 +75,16 @@ public class EventoController {
 	public String removerEvento(@PathVariable("id") long id) {
 		System.out.println("GET removerEvento");
     er.deleteById(id);
-    return "redirect:/listarEventos";
+    return "redirect:evento/listarEventos";
 	}
+	
+	
+	
 	@GetMapping("/listarEventos")
 	public ModelAndView listaEventos() {
 		System.out.println("GET listaEvento");
 		eventos = er.findAll();
-		ModelAndView mv = new ModelAndView("index");
+		ModelAndView mv = new ModelAndView("evento/listarEvento");
 		mv.addObject("eventos",eventos);
 		return mv;
 	}

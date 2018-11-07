@@ -1,4 +1,5 @@
-package br.com.dotcom.sbmvc;
+/*
+package br.com.dotcom.sbmvc.data;
 
 import javax.sql.DataSource;
 
@@ -30,9 +31,10 @@ public class DataConfigurationDev {
 		adapter.setDatabase(Database.MYSQL);
 		adapter.setShowSql(true);
 		adapter.setGenerateDdl(true);
-		adapter.setDatabasePlatform("org.hibernate.dialect.MySQLDialect");
+		adapter.setDatabasePlatform("org.hibernate.dialect.MySQL5Dialect");
 		adapter.setPrepareConnection(true);
 		return adapter;
 	}
 
 }
+*/

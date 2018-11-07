@@ -5,11 +5,10 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>br.com.dotcom</groupId>
-	<artifactId>spring-boot-mvc</artifactId>
+	<artifactId>mbrito-spring-boot-mvc</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
 
-	<name>spring-boot-mvc</name>
+	<name>mbrito-spring-boot-mvc</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
@@ -43,6 +42,10 @@
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -72,13 +75,6 @@
 			<version>${commons-dbcp2.version}</version>
 			<scope>compile</scope>
 		</dependency>		
-		
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
 
 	</dependencies>
 
@@ -92,4 +88,5 @@
 	</build>
 
 
+	<packaging>war</packaging>
 </project>

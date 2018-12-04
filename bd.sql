@@ -1,10 +1,13 @@
+--
+-- Script para a criação do banco de dados.  
+-- Executar de forma manual !!!
+--
 drop table evento_convidado;
 drop table convidado;
 drop table evento;
 drop table hibernate_sequence;
 
 drop table usuario_role;
---drop table role_usuario;
 drop table usuario;
 drop table role;
 
@@ -18,5 +21,3 @@ insert into usuario (login,nome,senha) values ('michelli.brito@gmail.com'  ,'Mic
 insert into usuario_role(usuario_id, role_id) values ('daniel.s.pimenta@gmail.com','ROLE_ADMIN');
 insert into usuario_role(usuario_id, role_id) values ('michelli.brito@gmail.com'  ,'ROLE_USERS');
 
-insert into role_usuarios(role_nome_role, usuarios_login) values ('ROLE_ADMIN','daniel.s.pimenta@gmail.com');
-insert into role_usuarios(role_nome_role, usuarios_login) values ('ROLE_USERS', 'michelli.brito@gmail.com');

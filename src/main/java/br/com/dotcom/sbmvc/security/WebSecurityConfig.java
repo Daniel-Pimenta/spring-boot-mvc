@@ -38,13 +38,26 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		System.out.println("WebSecurityConfig.configure(HttpSecurity http)");
-    http.csrf().disable().authorizeRequests()
-      .antMatchers(HttpMethod.GET, "/").permitAll()
-      .antMatchers(HttpMethod.GET, "/cadastrarEvento").hasRole("ADMIN")
-      .antMatchers(HttpMethod.POST,"/cadastrarEvento").hasRole("ADMIN")
-      .anyRequest().authenticated()
-      .and().formLogin().permitAll()
-      .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
+    http.csrf().disable()
+    	.authorizeRequests()
+      	.antMatchers(HttpMethod.GET, "/").permitAll()
+      	.antMatchers(HttpMethod.GET, "/fragments/").permitAll()
+      	.antMatchers(HttpMethod.GET, "/cadastrarEvento").hasRole("ADMIN")
+      	.antMatchers(HttpMethod.POST,"/cadastrarEvento").hasRole("ADMIN")
+      	.anyRequest().authenticated()
+      	.and()
+      .formLogin()
+        .loginPage("/acesso")
+        .usernameParameter("login")
+        .passwordParameter("senha")
+        .loginProcessingUrl("/checar")
+        //.defaultSuccessUrl("/", true)
+        .failureUrl("/acesso?error")
+      	.permitAll()
+      	.and()
+      .logout()
+      	.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+    ;
 	}
 
 	@Override

@@ -30,21 +30,23 @@ public class ImplementsUserDetailsService implements UserDetailsService{
 	
 	@Override
 	public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
-		System.out.println("Procurando Usuario: "+login);
+		System.out.println("ImplementsUserDetailsService.loadUserByUsername("+login+")");
 		usuario = ur.findById(login).get();
 		if(usuario == null){
-			System.out.println("Usuario não encontrado!");
-			throw new UsernameNotFoundException("Usuario não encontrado !!!");
+			System.out.println("  Usuario não encontrado!");
+			throw new UsernameNotFoundException("  Usuario não encontrado !!!");
+		}else {
+			System.out.println("  Usuario encontrado!");
 		}
 		if (usuario.getRole() == null || usuario.getRole().size()==0) {
-			System.out.println("Não foram concedidas permições para este usuário !");
+			System.out.println("  Não foram concedidas permições para este usuário !");
 			throw new UsernameNotFoundException("Não foram concedidas permições para este usuário !!!");
 		}else{
-			System.out.println("Qtd Roles: "+usuario.getRole().size());
+			System.out.println("  Qtd Roles: "+usuario.getRole().size());
 			roles = usuario.getRole();
 			for (int i=0; i<usuario.getRole().size(); i++) {
 				Role role = roles.get(i);
-				System.out.println("Role:["+i+"] ->"+role.getNomeRole());
+				System.out.println("  Role:["+i+"] ->"+role.getNomeRole());
 			}
 		}
 		User user = new User(usuario.getLogin(), usuario.getSenha(), true, true, true, true, usuario.getAuthorities());

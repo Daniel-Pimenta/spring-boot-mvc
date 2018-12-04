@@ -2,7 +2,7 @@
 <html xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
       
 <head>
-  <meta charset="ISO-8859-1">
+  <meta charset="UTF-8" />
   <title>EventosApp</title>
   
   <!--Import Google Icon Font-->
@@ -17,19 +17,8 @@
 
 <body>
 
-  <header>
-  <nav>
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Cadastrar Eventos</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="/listarEventos">Listar Evento</a></li>
-        <li><a href="/logout">Logout</a></li>
-      </ul>
-    </div>
-  </nav>
-  </header>
-     
-    <div class="container"  style="margin-left:50px; margin-top:10px;">
+  <div th:replace="/fragments/header :: header"></div>   
+  <div class="container"  style="margin-left:50px; margin-top:10px;">
     
     <form method="post" name="f1" id="f1" action="" style="width:600px;">
     <label for="id">Id</label><input type="text" name="id" id="id" th:value="${evento.id}" readonly="readonly">

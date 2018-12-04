@@ -15,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.dotcom.sbmvc.model.Convidado;
 import br.com.dotcom.sbmvc.model.Evento;
+import br.com.dotcom.sbmvc.model.Usuario;
 import br.com.dotcom.sbmvc.repository.ConvidadoRepository;
 import br.com.dotcom.sbmvc.repository.EventoRepository;
 
@@ -32,10 +33,14 @@ public class EventoController {
 	private List<Convidado> convidados;
 	private Convidado convidado;
 	
-/*	@GetMapping("/")
-	public String index() {
-		return "redirect:/listarEventos";
-	}*/
+	@GetMapping("/acesso")
+	public ModelAndView acesso() {
+		System.out.println("GET acesso");
+		ModelAndView mv = new ModelAndView("acesso");
+		Usuario usuario = new Usuario();
+		mv.addObject("usuario",usuario);
+		return mv;
+	}
 	
 	// *********** INSERT EVENTO ****************
 	@GetMapping("/cadastrarEvento")
@@ -75,7 +80,7 @@ public class EventoController {
 	public String removerEvento(@PathVariable("id") long id) {
 		System.out.println("GET removerEvento");
     er.deleteById(id);
-    return "redirect:evento/listarEventos";
+    return "redirect:/listarEventos";
 	}
 	
 	
